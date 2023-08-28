@@ -1,0 +1,86 @@
+@use "../utils/variables" as v;
+@use "../utils/mixins" as m;
+
+.accomoditation {
+	@include m.flex(space-between, center, $wrap: wrap, $gap: 20px);
+	@include m.font(v.$primary-color);
+	&__title {
+		&__container {
+			@include m.size(calc(100% - 170px));
+		}
+		@include m.font($size: 36px, $weight: 500);
+	}
+	&__location {
+		@include m.size(100%);
+		@include m.font($size: 18px, $weight: 400);
+	}
+	&__host {
+		@include m.flex($align: center);
+		@include m.size(150px);
+		@include m.font($size: 18px);
+		& img {
+			@include m.size(64px, 64px);
+			border-radius: 50%;
+		}
+	}
+	&__tags {
+		@include m.font(v.$secondary-color, 14px);
+		background-color: v.$primary-color;
+
+		border-radius: v.$small-radius;
+		padding: 5px 20px;
+		&__list {
+			@include m.flex(space-between, $gap: 10px);
+		}
+	}
+	&__rating {
+		@include m.flex(space-between, center);
+
+		@include m.size(196px, 36px);
+		@include m.font($size: 36px, $weight: 700);
+		&--empty {
+			color: #e3e3e3;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.accomoditation {
+		&__title {
+			@include m.font($size: 18px);
+			&__container {
+				order: 1;
+				@include m.size(100%);
+			}
+		}
+		&__location {
+			@include m.font($size: 14px);
+		}
+		&__host {
+			@include m.size(auto);
+			@include m.font($size: 12px);
+			order: 4;
+			gap: 5px;
+			& img {
+				@include m.size(32px, 32px);
+			}
+		}
+		&__tags {
+			@include m.flex($align: center);
+			@include m.font($size: 10px);
+			border-radius: v.$phone-radius;
+			padding: 5px 10px;
+			&__list {
+				order: 2;
+				width: 100%;
+				justify-content: flex-start;
+			}
+		}
+		&__rating {
+			@include m.size(98px);
+			@include m.font($size: 18px);
+
+			order: 3;
+		}
+	}
+}

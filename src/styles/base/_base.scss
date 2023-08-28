@@ -1,0 +1,52 @@
+@use "../utils/variables" as v;
+@use "../utils/mixins" as m;
+
+#root {
+	height: 100%;
+	@include m.flex(
+		space-between,
+		$direction: column,
+		$align: center,
+		$gap: 50px
+	);
+}
+header {
+	@include m.flex(space-between);
+	padding-top: 50px;
+}
+header,
+.main {
+	max-width: 1440px;
+	@include m.size(calc(100% - 100px));
+}
+.main {
+	@include m.flex($direction: column, $align: center, $gap: 43px);
+	&--details {
+		gap: 30px;
+	}
+}
+
+footer {
+	@include m.size(100%, 209px);
+	min-height: 209px;
+	@include m.flex(center, center, column, $gap: 20px);
+	background-color: v.$footer-background-color;
+}
+
+@media (max-width: 768px) {
+	#root {
+		gap: 27px;
+	}
+	.main {
+		gap: 22px;
+	}
+
+	header,
+	.main {
+		@include m.size(calc(100% - 40px));
+	}
+
+	header {
+		padding-top: 20px;
+	}
+}

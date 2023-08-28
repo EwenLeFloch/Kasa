@@ -1,0 +1,32 @@
+@use "../utils/variables" as v;
+@use "../utils/mixins" as m;
+
+.header {
+	&__navigation {
+		&__list {
+			@include m.size($height: 100%);
+			@include m.flex(space-between, center, $gap: 60px);
+			@include m.font(v.$primary-color, 24px, 500);
+			& .active {
+				text-decoration: underline v.$primary-color;
+			}
+			&__item {
+				color: v.$primary-color;
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.header {
+		&__logo {
+			@include m.size(145px);
+		}
+		&__navigation {
+			&__list {
+				@include m.flex($gap: 26px);
+				@include m.font($size: 12px);
+			}
+		}
+	}
+}

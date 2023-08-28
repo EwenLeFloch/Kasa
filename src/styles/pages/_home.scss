@@ -1,0 +1,36 @@
+@use "../utils/variables" as v;
+@use "../utils/mixins" as m;
+
+#gallery {
+	background-color: v.$secondary-background-color;
+	border-radius: v.$big-radius;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(25%, 3fr));
+	// grid-auto-rows: 1fr;
+	gap: 50px;
+	padding: 50px 50px;
+	&::after {
+		content: "";
+		@include m.size(25vw, 25vw);
+	}
+}
+
+@media (max-width: 1024px) {
+	#gallery {
+		grid-template-columns: repeat(2, 1fr);
+		&::after {
+			display: none;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	#gallery {
+		grid-template-columns: 1fr;
+		background-color: v.$primary-background-color;
+		padding: 0;
+		gap: 20px;
+		border-radius: v.$small-radius;
+	}
+}
